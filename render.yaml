@@ -2,8 +2,12 @@ services:
   - type: web
     name: wmoney-live
     runtime: node
-    buildCommand: npm install && npx prisma generate --schema=./server/prisma/schema.prisma && npm run build
-    startCommand: node server/server.js
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npx prisma generate --schema=./prisma/schema.prisma && npm run build
+    startCommand: npm run start
     envVars:
       - key: DATABASE_URL
-        value: file:./server/prisma/dev.db
+        value: file:./prisma/dev.db # Replace this with a POSTGRES URL in the Render Dashboard for production!
+      - key: NODE_VERSION
+        value: 20
