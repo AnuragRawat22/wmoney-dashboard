@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Transaction {
+  id       String   @id @default(uuid())
+  title    String
+  amount   Float
+  date     DateTime @default(now())
+  category String
+  type     String
+
+  @@index([date])
+  @@index([category])
+}
+
+model Subscription {
+  id               String   @id @default(uuid())
+  name             String
+  price            Float
+  billingCycle     String
+  nextRenewal      DateTime
+  category         String
+  remindersEnabled Boolean
+}
