@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: wmoney-live
+    runtime: node
+    buildCommand: npm install && npx prisma generate --schema=./server/prisma/schema.prisma && npm run build
+    startCommand: node server/server.js
+    envVars:
+      - key: DATABASE_URL
+        value: file:./server/prisma/dev.db
