@@ -16,7 +16,7 @@ import TransactionManager from "./components/features/TransactionManager";
 import SubscriptionManager from "./components/features/SubscriptionManager";
 import Analytics from "./components/features/Analytics";
 import LoginPage from "./components/features/LoginPage";
-const API_URL = "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     return localStorage.getItem("wmoney_auth") === "true";

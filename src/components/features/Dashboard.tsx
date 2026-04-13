@@ -398,12 +398,12 @@ const Dashboard: React.FC<DashboardProps> = ({
       </div>
       {}
       {activeModal && (
-        <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:p-4">
+        <div className="fixed inset-0 z-[9999] flex items-end justify-center p-0 sm:p-4">
           <div
             className="absolute inset-0 bg-midnight-navy/80 backdrop-blur-xl"
             onClick={() => setActiveModal(null)}
           ></div>
-          <div className="relative w-full max-w-md bg-card-navy border-x border-t border-white/10 rounded-t-[40px] sm:rounded-[40px] p-8 shadow-2xl animate-in slide-in-from-bottom duration-500 max-h-[90vh] overflow-y-auto no-scrollbar">
+          <div className="relative w-full max-w-md bg-card-navy border-x border-t border-white/10 rounded-t-[40px] sm:rounded-[40px] p-6 pb-24 sm:p-8 sm:pb-8 shadow-2xl animate-in slide-in-from-bottom duration-500 max-h-[90vh] overflow-y-auto no-scrollbar">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-3">
                 <div

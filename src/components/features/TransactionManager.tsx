@@ -175,7 +175,7 @@ const TransactionManager: React.FC<TransactionManagerProps> = ({
                 </div>
                 <button
                   onClick={() => onDelete(t.id)}
-                  className="w-10 h-10 flex items-center justify-center text-white/20 hover:text-sunset-rose hover:bg-sunset-rose/10 rounded-xl transition-all opacity-0 group-hover:opacity-100 border border-transparent hover:border-sunset-rose/20"
+                  className="w-10 h-10 flex items-center justify-center text-white/20 hover:text-sunset-rose hover:bg-sunset-rose/10 rounded-xl transition-all opacity-100 lg:opacity-0 group-hover:opacity-100 border border-transparent hover:border-sunset-rose/20"
                 >
                   <Trash2 size={18} />
                 </button>
@@ -211,12 +211,12 @@ const TransactionManager: React.FC<TransactionManagerProps> = ({
       )}
       {}
       {isAdding && (
-        <div className="fixed inset-0 z-[100] flex items-end justify-center p-0">
+        <div className="fixed inset-0 z-[9999] flex items-end justify-center p-0">
           <div
             className="absolute inset-0 bg-midnight-navy/60 backdrop-blur-md"
             onClick={() => setIsAdding(false)}
           ></div>
-          <div className="relative w-full max-w-md bg-card-navy border-t border-white/10 rounded-t-[40px] p-8 shadow-2xl animate-in slide-in-from-bottom duration-300 max-h-[90vh] overflow-y-auto no-scrollbar">
+          <div className="relative w-full max-w-md bg-card-navy border-t border-white/10 rounded-t-[40px] p-6 pb-24 sm:pb-8 sm:p-8 shadow-2xl animate-in slide-in-from-bottom duration-300 max-h-[90vh] overflow-y-auto no-scrollbar">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h3 className="text-2xl font-black text-white tracking-tighter">
@@ -306,7 +306,8 @@ const TransactionManager: React.FC<TransactionManagerProps> = ({
               </div>
               <Button
                 type="submit"
-                className="w-full py-6"
+                disabled={!formData.title || !formData.amount}
+                className="w-full py-6 disabled:opacity-50 disabled:cursor-not-allowed"
                 variant={formData.type === "income" ? "success" : "primary"}
               >
                 Log {formData.type === "income" ? "Earnings" : "Expense"}

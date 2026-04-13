@@ -46,7 +46,7 @@ export const BigDataChart: React.FC = React.memo(() => {
     try {
       setLoading(true);
       const response = await fetch(
-        "http://localhost:5000/api/analytics/trends",
+        `${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/analytics/trends`,
       );
       if (!response.ok) throw new Error("Network error");
       const data: any[] = await response.json();
@@ -80,7 +80,7 @@ export const BigDataChart: React.FC = React.memo(() => {
   const runNlpCleanup = async () => {
     try {
       setCleaningPos(true);
-      const res = await fetch("http://localhost:5000/api/nlp/clean", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/nlp/clean`, {
         method: "POST",
       });
       const result = await res.json();
