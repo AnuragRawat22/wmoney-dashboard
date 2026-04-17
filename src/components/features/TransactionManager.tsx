@@ -216,7 +216,7 @@ const TransactionManager: React.FC<TransactionManagerProps> = ({
             className="absolute inset-0 bg-midnight-navy/60 backdrop-blur-md"
             onClick={() => setIsAdding(false)}
           ></div>
-          <div className="relative w-full max-w-md bg-card-navy border-t border-white/10 rounded-t-[40px] p-6 pb-24 sm:pb-8 sm:p-8 shadow-2xl animate-in slide-in-from-bottom duration-300 max-h-[90vh] overflow-y-auto no-scrollbar">
+          <div className="relative w-full max-w-md bg-card-navy border-t border-white/10 rounded-t-[40px] p-6 pb-24 sm:pb-8 sm:p-8 shadow-2xl animate-in slide-in-from-bottom duration-300 max-h-[90vh] overflow-y-auto no-scrollbar scroll-smooth">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h3 className="text-2xl font-black text-white tracking-tighter">
@@ -307,7 +307,7 @@ const TransactionManager: React.FC<TransactionManagerProps> = ({
               <Button
                 type="submit"
                 disabled={!formData.title || !formData.amount}
-                className="w-full py-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-6 disabled:opacity-50 disabled:cursor-not-allowed relative z-50"
                 variant={formData.type === "income" ? "success" : "primary"}
               >
                 Log {formData.type === "income" ? "Earnings" : "Expense"}

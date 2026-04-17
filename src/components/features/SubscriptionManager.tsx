@@ -257,7 +257,7 @@ const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
             className="absolute inset-0 bg-midnight-navy/60 backdrop-blur-md"
             onClick={closeModal}
           ></div>
-          <div className="relative w-full max-w-md bg-card-navy border-x border-t border-white/10 rounded-t-[40px] p-6 pb-24 sm:p-8 sm:pb-8 shadow-2xl animate-in slide-in-from-bottom duration-300 max-h-[90vh] overflow-y-auto no-scrollbar">
+          <div className="relative w-full max-w-md bg-card-navy border-x border-t border-white/10 rounded-t-[40px] p-6 pb-24 sm:p-8 sm:pb-8 shadow-2xl animate-in slide-in-from-bottom duration-300 max-h-[90vh] overflow-y-auto no-scrollbar scroll-smooth">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h3 className="text-2xl font-black text-white tracking-tighter">
@@ -391,7 +391,7 @@ const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
               <button
                 type="submit"
                 disabled={!formData.name || !formData.price || !formData.nextRenewal}
-                className="w-full py-6 bg-white text-midnight-navy rounded-[32px] font-black text-sm uppercase tracking-widest shadow-2xl active:scale-95 transition-all mt-6 shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-6 bg-white text-midnight-navy rounded-[32px] font-black text-sm uppercase tracking-widest shadow-2xl active:scale-95 transition-all mt-6 shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed relative z-50"
               >
                 {editingId ? "Update Asset" : "Verify & Add"}
               </button>
