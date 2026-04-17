@@ -1,78 +1,85 @@
-# wMoney: Financial Intelligence Suite
+# wMoney: Intelligent Financial Dashboard
 
-wMoney is a full-stack financial intelligence suite engineered to solve the problem of unstructured banking data through automated normalization and real-time visualization. It serves as a unified analytical layer, translating noisy, high-volume transactional data into coherent financial metrics and interactive dashboards.
+**wMoney** is a premium, full-stack financial intelligence suite engineered to solve the complexity of unstructured banking data through automated NLP-driven categorization and real-time visualization. It serves as a unified analytical layer, translating noisy, high-volume transactional data into coherent financial metrics and interactive dashboards.
 
-## System Architecture
+## 🚀 Live Deployment
+- **Frontend**: [https://wmoney-dashboard.onrender.com](https://wmoney-dashboard.onrender.com)
+- **Backend API**: [https://wmoney-live-v2.onrender.com](https://wmoney-live-v2.onrender.com)
 
-The application utilizes a decoupled client-server architecture to cleanly separate presentation logic from data processing and persistence:
+---
 
-- **Client Application**: A single-page application (SPA) built with React and Vite, optimized for rapid rendering and state management.
-- **RESTful API**: A Node.js and Express backend acting as the central controller for data ingestion, normalization, and secure database operations.
-- **Object-Relational Mapping**: Prisma ORM manages data modeling and abstract database communication, ensuring type-safe transactions.
+## 🏗️ Project Architecture
 
-## Data Engineering & Performance
+The application implements a decoupled client-server architecture designed for scalability and high-performance data processing:
 
-The core infrastructure of wMoney is designed to handle substantial data throughput efficiently:
+- **Frontend Core**: A high-performance SPA built with **React** and **Vite**, utilizing **Tailwind CSS** for a premium glassmorphic UI and **Recharts** for complex data visualization.
+- **Backend Logic Layer**: A **Node.js/Express** server that acts as the central controller for data ingestion, normalization, and secure database operations. It includes a custom NLP categorization engine.
+- **Data Persistence**: **PostgreSQL** hosted on **Supabase**, managed via **Prisma ORM** for type-safe database operations and efficient migrations.
 
-- **High-Volume Data Management**: Capable of managing 10,000+ transactional records simultaneously within the embedded relational SQLite environment.
-- **Optimized Compute Allocation**: Relies on strict database indexing and server-side aggregation. By computing heavy analytical metrics (such as category aggregates and cumulative balances) upstream, the system minimizes JSON payload size and ensures consistently high UI frame rates in the client rendering layer.
+---
 
-## Transaction Normalization Engine
-
-Raw bank exports inherently suffer from noisy merchant definitions, containing terminal codes, gateway prefixes, and branch identification numbers. wMoney implements a pre-processing layer to strictly enforce data cleanliness before analytical consumption.
-
-- **Pattern Matching Pipeline**: A custom regular expression and pattern matching engine structurally parses and evaluates substrings in raw transaction inputs.
-- **Data Sanitization**: Automatically strips irrelevant POS identification headers (e.g., "SQ _", "TST_", "ACH DEBIT") and alphanumeric transaction IDs.
-- **Standardized Visualization**: By resolving raw inputs into clean merchant entities, downstream data visualizations and category categorizations remain highly accurate and deterministic.
-
-## Technical Stack
+## 🛠️ Technical Stack
 
 ### Frontend
-
-- **React (Vite)**: Core UI framework and build tooling.
-- **TypeScript**: Static typing for deterministic component contracts.
-- **Tailwind CSS**: Utility-first styling for responsive interface layout.
-- **Recharts**: D3-based charting components for analytical rendering.
+- **Framework**: React 18 (Vite)
+- **Styling**: Tailwind CSS (Sophisticated Fintech Emerald Theme)
+- **State Management**: React Context API
+- **Visualization**: Recharts (D3-based charting)
 
 ### Backend
+- **Runtime**: Node.js & Express
+- **Language**: TypeScript
+- **Intelligence**: Custom NLP logic for merchant normalization
+- **Database Architecture**: PostgreSQL (Cloud-hosted via Supabase)
+- **ORM**: Prisma
 
-- **Node.js / Express.js**: Asynchronous event-driven backend server.
-- **TypeScript**: Shared type definitions and server-side safety boundaries.
-- **Prisma**: Type-safe database client and schema management.
+---
 
-### Storage
+## 🌟 Key Technical Accomplishments
 
-- **SQLite**: Embedded relational database enabling lightweight, zero-configuration persistence.
+- **Cloud Migration**: Successfully migrated the entire data infrastructure from a local SQLite environment to a professional, cloud-hosted **PostgreSQL** cluster on Supabase, ensuring enterprise-grade persistence and reliability.
+- **NLP Intelligence Implementation**: Architected an NLP logic layer (`nlpProcessor.ts`) in the backend that performs structural parsing and normalization of raw bank transaction strings. It automatically strips irrelevant POS identifiers and alphanumeric noise to resolve raw inputs into clean merchant entities.
+- **Big Data Optimization**: Engineered efficient data pipelines capable of handling **10,000+ records** using Prisma batch operations (`createMany`), maintaining sub-second query performance and ensuring consistently high UI frame rates in the client rendering layer.
 
-## Installation & Deployment
+---
 
-Prerequisites required for execution include Node.js and npm/yarn package managers.
+## ⚙️ Installation & Setup
 
-1. Install module dependencies for both the root environment and server daemon:
+### Prerequisites
+- Node.js (v18+)
+- A Supabase account and PostgreSQL database
 
-   ```bash
-   npm install
-   cd server && npm install
-   cd ..
-   ```
+### 1. Clone & Install Dependencies
+```bash
+git clone https://github.com/AnuragRawat22/wmoney-dashboard.git
+cd wmoney-dashboard
+npm install
+cd server && npm install
+```
 
-2. Initialize the SQLite development database:
+### 2. Environment Configuration
+Create a `.env` file in the `/server` directory:
+```env
+DATABASE_URL="your_supabase_postgresql_connection_string"
+DIRECT_URL="your_supabase_direct_connection_string"
+PORT=3001
+```
 
-   ```bash
-   cd server
-   npx prisma db push
-   cd ..
-   ```
+### 3. Database Initialization
+Use Prisma to sync the schema and seed the database with optimized records:
+```bash
+cd server
+npx prisma db push
+npx prisma db seed
+```
 
-3. Launch the development servers concurrently:
+### 4. Running Locally
+```bash
+# Start both frontend and backend concurrently
+npm run dev
+```
 
-   ```bash
-   # In terminal 1 (Backend)
-   cd server
-   npm run dev
+---
 
-   # In terminal 2 (Frontend)
-   npm run dev
-   ```
-
-The client application will be successfully bound and listening for HTTP traffic on standard local ports.
+## 📊 System Overview
+Raw bank exports inherently suffer from noisy merchant definitions, containing terminal codes, gateway prefixes, and branch identification numbers. wMoney implements a pre-processing layer to strictly enforce data cleanliness before analytical consumption. By computing heavy analytical metrics (such as category aggregates and cumulative balances) upstream, the system minimizes JSON payload size and ensures a fluid, responsive user experience.
